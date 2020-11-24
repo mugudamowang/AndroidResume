@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">\@TeamResume</string>
+    <string name="author"><i>powered by mugu</i></string>
+    <string name="menu_team">Team</string>
+    <string name="menu_intro">Intro</string>
+    <string name="tv_intro">
+        Hallo!\nThis app is made for our Teammates, guys build the **SCAU-pdd** application. <b>@yyh,@yyj,@sjy,@yyc,@qsw</b>
+    </string>
+
+</resources>
