@@ -22,6 +22,7 @@ import com.example.teamresume.ResumeActivity;
 
 import org.w3c.dom.Text;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -29,11 +30,13 @@ import java.util.HashMap;
 public class TeamFragment extends Fragment {
 
     private ListView lv_contianer;
+    private String[][] personlist;
+    private int[] imgaddress;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_team,container,false);
+        View view = inflater.inflate(R.layout.fragment_team, container, false);
         return view;
     }
 
@@ -41,27 +44,50 @@ public class TeamFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         lv_contianer = view.findViewById(R.id.lv_contianer);
-        ArrayList<HashMap<String, Object>> listItem = new ArrayList<HashMap<String, Object>>();/*在数组中存放数据*/
-        for (int i = 0; i < 15; i++) {
+
+        //two data array
+        imgaddress = new int[]{R.drawable.avatar01, R.drawable.avatar02, R.drawable.avatar03, R.drawable.avatar04, R.drawable.avatar05};
+        personlist = new String[][]{
+                {"yyh", "20", "male", "首席干饭师", "web-developer"},
+                {"yyj", "20", "male", "首席打工人", "backend-developer"},
+                {"sjy", "20", "male", "短裤战神", "java-developer"},
+                {"qsw", "20", "male", "伟哥就是伟大", "management-developer"},
+                {"yyc", "20", "male", "fivefire", "sql-developer"},
+        };
+
+        //data sent to MyAdapter
+        final ArrayList<HashMap<String, Object>> listItem = new ArrayList<HashMap<String, Object>>();/*在数组中存放数据*/
+        for (int i = 0; i < personlist.length; i++) {
             HashMap<String, Object> map = new HashMap<String, Object>();
-            map.put("ItemImage", R.mipmap.ic_launcher);//加入图片
-            map.put("ItemTitle", "第" + i + "行");
-            map.put("ItemRemark", "这是第" + i + "行");
+            map.put("ItemName", personlist[i][0]);
+            map.put("ItemAge", personlist[i][1]);
+            map.put("ItemGender", personlist[i][2]);
+            map.put("ItemRemark", personlist[i][3]);
+            map.put("ItemSkill", personlist[i][4]);
+            map.put("ItemImage", imgaddress[i]);
             listItem.add(map);
         }
-
         MyAdapter adapter = new MyAdapter(this.getContext(), listItem);
         lv_contianer.setAdapter(adapter);//为ListView绑定适配器
 
-
+        //OnclickEvent
         lv_contianer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-                    Toast.makeText(getActivity(),"Fxxk!"+arg2, Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getActivity(), ResumeActivity.class);
-                    intent.putExtra("id",arg2);
-                    startActivity(intent);
+
+                Intent intent = new Intent(getActivity(), ResumeActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("ItemName", personlist[arg2][0]);
+                bundle.putString("ItemAge", personlist[arg2][1]);
+                bundle.putString("ItemGender", personlist[arg2][2]);
+                bundle.putString("ItemRemark", personlist[arg2][3]);
+                bundle.putString("ItemSkill", personlist[arg2][4]);
+                bundle.putInt("ItemImage", imgaddress[arg2]);
+
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
+
     }
 }

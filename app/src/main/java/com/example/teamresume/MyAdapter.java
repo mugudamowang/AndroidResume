@@ -63,7 +63,7 @@ public class MyAdapter extends BaseAdapter {
             holder = (ViewHolder)convertView.getTag();
         }
         holder.img.setImageResource((Integer) listItem.get(position).get("ItemImage"));
-        holder.title.setText((String) listItem.get(position).get("ItemTitle"));
+        holder.title.setText((String) listItem.get(position).get("ItemName"));
         holder.remark.setText((String) listItem.get(position).get("ItemRemark"));
 
         return convertView;

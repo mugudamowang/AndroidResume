@@ -14,8 +14,8 @@
         android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/re_avatar"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
+            android:layout_width="168dp"
+            android:layout_height="168dp"
             android:layout_margin="@dimen/text_margin"
             android:background="@color/colorPrimary"
             />
@@ -25,27 +25,57 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="name"
+            android:layout_marginLeft="35dp"
             android:layout_marginTop="@dimen/text_margin"
             android:layout_toRightOf="@+id/re_avatar"
             android:textSize="26sp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="姓名"
+            android:textSize="12sp"
+            android:layout_alignBaseline="@+id/re_name"
+            android:layout_toRightOf="@id/re_avatar"
+            android:id="@+id/label_name"
             />
         <TextView
             android:id="@+id/re_age"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="age"
+            android:layout_marginLeft="35dp"
             android:layout_toRightOf="@+id/re_avatar"
             android:layout_below="@+id/re_name"
             android:textSize="20sp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="年龄"
+            android:textSize="12sp"
+            android:layout_alignBaseline="@+id/re_age"
+            android:layout_toRightOf="@id/re_avatar"
+            android:id="@+id/label_age"
             />
         <TextView
             android:id="@+id/re_gender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="gender"
+            android:layout_marginLeft="35dp"
             android:layout_toRightOf="@+id/re_avatar"
             android:layout_below="@+id/re_age"
             android:textSize="20sp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="性别"
+            android:textSize="12sp"
+            android:layout_alignBaseline="@+id/re_gender"
+            android:layout_toRightOf="@id/re_avatar"
+            android:id="@+id/label_gender"
             />
 
         <TextView
